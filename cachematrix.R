@@ -4,7 +4,7 @@
 ## If the matrix is changed using the set function, then the cached inverse is cleared and recalculated lazily.
 
 ## Write a short comment describing this function
-
+## This function stores a matrix and provides accessors to get and set the matrix and its inverse.
 makeCacheMatrix <- function(x = matrix()) 
 {
     ## init values
@@ -12,6 +12,7 @@ makeCacheMatrix <- function(x = matrix())
     set <- function(y) 
     {
         x <<- y
+        ## clear the inverse if the matrix is set.
         inv <<- NULL
     }
     ## define accessors
@@ -26,6 +27,9 @@ makeCacheMatrix <- function(x = matrix())
 
 
 ## Write a short comment describing this function
+## This function solves the inverse for a square matrix and caches the result
+## If a cached solution for the inverse is available, this is supplied to avoid the overhead
+## of recalculation
 
 cacheSolve <- function(x, ...)
 {
